@@ -1,0 +1,9 @@
+spring:
+    datasource:
+      url: jdbc:mysql://localhost:3306/circle?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: root
+      password: root
+
+mybatis:
+    type-aliases-package: com.exmaple.circle.model
+    config-location: classpath:mybatis.xml

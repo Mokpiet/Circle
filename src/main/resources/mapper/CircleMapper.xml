@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exmaple.circle.mapper.CircleMapper">
+    <insert id="sendMessage" useGeneratedKeys="true" keyProperty="id">
+        insert into circle(circle_message, user_id,create_date) values (#{circleMessage},#{userId},#{createDate})
+    </insert>
+    <select id="selectCircleById" resultType="Circle" parameterType="Circle">
+        select * from circle
+        <where>
+            <if test="id!=null">
+                    id=#{id}
+            </if>
+        </where>
+    </select>
+
+    <update id="pariseMessage" parameterType="com.exmaple.circle.bean.UserCircleBean">
+        UPDATE circle  SET
+        <if test="pariseCount!=null"> parise_count=#{pariseCount} </if>
+        <if test="pariseIds!=null"> ,pariseIds=#{pariseIds} </if>
+        <where>
+            <if test="circleId!=null">
+                id=#{circleId}
+            </if>
+        </where>
+    </update>
+
+
+
+</mapper>
